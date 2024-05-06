@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { createContext, useState } from 'react';
 
 // # Step-0
 const CounterContext = createContext();
@@ -7,7 +7,17 @@ const CounterContext = createContext();
 // ใช้ FunctionComponent => Provider
 
 function CounterContextProvider({ children }) {
-  return <CounterContext.Provider value={42}>{children}</CounterContext.Provider>;
+  const [count, setCount] = useState(0);
+
+  const increment = () => {
+    setCount(count + 1);
+  };
+
+  const decrement = () => {
+    setCount(count - 1);
+  };
+  const sharedObj = { count, increment, decrement };
+  return <CounterContext.Provider value={sharedObj}>{children}</CounterContext.Provider>;
 }
 // # Provider Step-2 :  Export ไปครอบ App
 export default CounterContextProvider;
