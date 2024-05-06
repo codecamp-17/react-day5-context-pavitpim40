@@ -1,12 +1,7 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { ThemeContext } from './context/ThemeContext';
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-  };
-  let bg = isDarkMode ? 'bg-black' : 'bg-white';
-  let bgButton = isDarkMode ? 'bg-white text-black' : 'bg-black text-white';
+  const { bg, bgButton, toggleDarkMode, isDarkMode } = useContext(ThemeContext);
 
   return (
     <div className={`flex justify-center items-center h-screen ${bg}`}>
