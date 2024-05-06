@@ -1,5 +1,8 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { CounterContext } from './context/CounterContext';
 function App() {
+  // # ConSumer Step 2 : useContext for Access Data
+  const data = useContext(CounterContext);
   const [count, setCount] = useState(0);
 
   const increment = () => {
@@ -16,14 +19,14 @@ function App() {
       <div className='flex items-center justify-between'>
         <button
           className='bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600'
-          onClick={() => setCount(count - 1)}
+          onClick={decrement}
         >
           Decrement
         </button>
-        <span className='text-xl font-semibold'>{count}</span>
+        <span className='text-xl font-semibold'>{data}</span>
         <button
           className='bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600'
-          onClick={() => setCount(count + 1)}
+          onClick={increment}
         >
           Increment
         </button>
